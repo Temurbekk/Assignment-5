@@ -1,4 +1,5 @@
 let columns = 0;
+let currentColour = "white"
 
 const addRow = () => {
   if (columns === 0) column = 1;
@@ -38,7 +39,6 @@ const addColumn = () => {
   //Making sure the function is being called
   console.log("Adding column");
 };
-
 const removeRow = () => {
   const row = document.getElementsByClassName("row");
   const tableRow = Array.from(row);
@@ -60,3 +60,20 @@ const removeColumn = () => {
 
   console.log("Remove Column");
 };
+const selectColour = (colour) =>{
+  currentColour=colour;
+};
+
+function setColour(cell){
+  cell.style.backgroundColour = currentColour;
+  cell.classList.remove("uncoloured");
+  
+function clearAll() {
+  //get all cells in the .html
+  let cells = document.getElementsById("td");
+  let arrOfCells = [...cells]
+  //for every cell, change the colour to white and mark it uncoloured
+  cells.forEach((val) => {
+    val.style.backgroundColor = "white";
+    val.classList.add("uncoloured");
+  });
