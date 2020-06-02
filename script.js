@@ -28,7 +28,7 @@ const addRow = () => {
 
   while (index < columns) {
     const pixel = document.createElement("td");
-    pixel.classList.add("pixel");
+    pixel.classList.add("pixel", "uncoloured");
     row.appendChild(pixel);
     index++;
   }
@@ -54,7 +54,7 @@ const addColumn = () => {
 
   tableRow.forEach((cell) => {
     const pixel = document.createElement("td");
-    pixel.classList.add("pixel");
+    pixel.classList.add("pixel", "uncoloured");
     cell.appendChild(pixel);
   });
 
@@ -121,7 +121,8 @@ function handleEvents(cell) {
 const clearAll = () => {
   const allCells = document.getElementsByTagName("td");
   for (let i = 0; i < allCells.length; i++) {
-    allCells[i].style.backgroundColor = "#FFFFFF";
+    allCells[i].style = undefined;
+    allCells[i].classList.add("uncoloured")
   }
 };
 
@@ -133,9 +134,9 @@ const fillAll = () => {
 };
 
 const fillAllUncolored = () => {
-  const allCells = document.getElementsByTagName("td");
-  for (let i = 0; i < allCells.length; i++) {
-    if(allCells[i].style.backgroundColor == "#FFFFFF") 
-      allCells[i].style.backgroundColor = selectedColor;
+  const unColoredCells = document.getElementsByClassName("pixel");
+  for (let i = 0; i < unColoredCells.length; i++) {
+    if(unColoredCells.style === undefined)
+      unColoredCells[i].style.backgroundColor = selectedColor;
   }
 }
