@@ -15,3 +15,19 @@ const addRow = () => {
   //Making sure the function is being called
   console.log("Adding cell");
 };
+
+const addColumn = () => {
+  columns++;
+
+  const row = document.getElementsByClassName("row");
+  const tr = Array.from(row);
+
+  tr.forEach((cell) => {
+    const pixel = document.createElement("td");
+    pixel.classList.add("pixel");
+    cell.appendChild(pixel);
+  });
+
+  //Making sure the function is being called
+  console.log("Adding column");
+};
