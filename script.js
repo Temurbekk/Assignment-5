@@ -1,6 +1,20 @@
 let columns = 0;
 let currentColour = "white";
 
+var selectedColor = "#FFFFFF";
+
+function pickBlue() {
+    selectedColor = "#00FFFF";
+}
+
+function pickRed() {
+    selectedColor = "#FF6666";
+}
+
+function pickWhite() {
+    selectedColor = "#FFFFFF"
+}
+
 const addRow = () => {
   if (columns === 0) column = 1;
   const table = document.getElementById("table");
