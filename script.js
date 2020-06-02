@@ -1,6 +1,7 @@
-let columns = 1;
+let columns = 0;
 
 const addRow = () => {
+  if (columns === 0) column = 1;
   const table = document.getElementById("table");
   const row = document.createElement("tr");
 
@@ -20,8 +21,11 @@ const addRow = () => {
 };
 
 const addColumn = () => {
+  if (columns === 0) {
+    column = 1;
+    addRow();
+  }
   columns++;
-
   const row = document.getElementsByClassName("row");
   const tableRow = Array.from(row);
 
@@ -42,4 +46,17 @@ const removeRow = () => {
   tableRow[length].parentNode.removeChild(tableRow[length]);
 
   console.log("Removing Row");
+};
+
+const removeColumn = () => {
+  columns--;
+
+  const row = document.getElementsByClassName("row");
+  const tableRow = Array.from(row);
+
+  tableRow.forEach((cell) => {
+    cell.removeChild(cell.lastChild);
+  });
+
+  console.log("Remove Column");
 };
