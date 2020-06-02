@@ -8,9 +8,9 @@ const addRow = () => {
   table.appendChild(row);
 
   for (let i = 0; i < columns; i++) {
-    const cell = document.createElement("td");
-    cell.classList.add("cell");
-    row.appendChild(cell);
+    const pixel = document.createElement("td");
+    pixel.classList.add("pixel");
+    row.appendChild(pixel);
   }
   //Making sure the function is being called
   console.log("Adding cell");
