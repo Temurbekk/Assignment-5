@@ -64,18 +64,17 @@ const selectColour = (colour) => {
   currentColour = colour;
 };
 
-function setColour(cell) {
+const setColour = (cell) => {
   cell.style.backgroundColour = currentColour;
   cell.classList.remove("uncoloured");
+};
 
-  function clearAll() {
-    //get all cells in the .html
-    let cells = document.getElementsById("td");
-    let arrOfCells = [...cells];
-    //for every cell, change the colour to white and mark it uncoloured
-    cells.forEach((val) => {
-      val.style.backgroundColor = "white";
-      val.classList.add("uncoloured");
-    });
-  }
-}
+const clearAll = () => {
+  //get all cells in the .html
+  const cells = document.getElementsById("td");
+  //for every cell, change the colour to white and mark it uncoloured
+  cells.forEach((val) => {
+    val.style.backgroundColor = "white";
+    val.classList.add("uncoloured");
+  });
+};
