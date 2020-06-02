@@ -38,6 +38,8 @@ const addColumn = () => {
 const removeRow = () => {
   const row = document.getElementsByClassName("row");
   const tableRow = Array.from(row);
-  let length = tr.length - 1;
+  let length = tableRow.length - 1;
   tableRow[length].parentNode.removeChild(tableRow[length]);
+
+  console.log("Removing Row");
 };
