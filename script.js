@@ -124,3 +124,10 @@ const clearAll = () => {
     allCells[i].style.backgroundColor = "";
   }
 };
+
+const fillAll = () => {
+  const allCells = document.getElementsByTagName("td");
+  for (let i = 0; i < allCells.length; i++) {
+    allCells[i].style.backgroundColor = selectedColor;
+  }
+};
