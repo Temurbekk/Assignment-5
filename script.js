@@ -18,7 +18,7 @@ function pickWhite() {
 const tableCells = document.getElementsByTagName("td");
 
 const addRow = () => {
-  if (columns === 0) column = 1;
+  if (columns === 0) columns = 1;
   const table = document.getElementById("table");
   const row = document.createElement("tr");
 
