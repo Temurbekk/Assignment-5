@@ -1,6 +1,5 @@
 let columns = 0;
-let currentColour = "white";
-
+let colouring = false;
 var selectedColor = "#FFFFFF";
 
 function pickBlue() {
@@ -36,9 +35,9 @@ const addRow = () => {
 
   for (let i = 0; i < tableCells.length; i++) {
     //Derrick's Code: This allows you to change the color of the cells
-    tableCells[i].addEventListener("click", (event) => {
-      event.target.style.backgroundColor = selectedColor;
-    });
+    //updated to call a general event handling function to allow for setting
+    //colours via drag
+    handleEvents(tableCells[i])
   }
   //Making sure the function is being called
   console.log("Adding cell");
@@ -61,9 +60,9 @@ const addColumn = () => {
 
   for (let i = 0; i < tableCells.length; i++) {
     //Derrick's Code: This allows you to change the color of the cells
-    tableCells[i].addEventListener("click", (event) => {
-      event.target.style.backgroundColor = selectedColor;
-    });
+    //updated to call a general event handling function to allow for setting
+    //colours via drag
+    handleEvents(tableCells[i])
   }
 
   //Making sure the function is being called
@@ -95,13 +94,32 @@ const selectColour = (colour) => {
 };
 
 const setColour = (cell) => {
-  cell.style.backgroundColour = currentColour;
+  cell.style.backgroundColour = selectedColor;
   cell.classList.remove("uncoloured");
 };
 
+function handleEvents(cell) {
+  //handles clicking
+  cell.addEventListener("click", setColour(cell));
+
+  //handles dragging/"drawing"
+  cell.addEventListener("mousedown", (e) => {
+    colouring = true;
+  });
+
+  cell.addEventListener("mousemove", (e) => {
+    if (colouring)
+      event.target.style.backgroundColor = selectedColor;
+  });
+
+  cell.addEventListener("mouseup", (e) => {
+    if (colouring)
+      colouring = false;
+  });
+}
+
 const clearAll = () => {
   const allCells = document.getElementsByTagName("td");
-
   for (let i = 0; i < allCells.length; i++) {
     allCells[i].style.backgroundColor = "";
   }
