@@ -1,7 +1,8 @@
-let columns = 1;
+let columns = 0;
 let currentColour = "white"
 
 const addRow = () => {
+  if (columns === 0) column = 1;
   const table = document.getElementById("table");
   const row = document.createElement("tr");
 
@@ -21,8 +22,11 @@ const addRow = () => {
 };
 
 const addColumn = () => {
+  if (columns === 0) {
+    column = 1;
+    addRow();
+  }
   columns++;
-
   const row = document.getElementsByClassName("row");
   const tableRow = Array.from(row);
 
