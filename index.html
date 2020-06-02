@@ -7,10 +7,15 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css"
     />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
-    <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
+    <nav
+      class="navbar has-shadow"
+      role="navigation"
+      aria-label="main navigation"
+    >
       <div class="navbar-brand">
         <a
           role="button"
@@ -24,13 +29,24 @@
           <span aria-hidden="true"></span>
         </a>
       </div>
-
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-                <div class="button is-primary" onClick="addColumn()">Add Column</div>
-                <div class="button is-info" onClick="addRow()">Add Row</div>
-                <div class="button is-danger" onClick-="removeRow()">Remove Row</div>
+      <div class="navbar-start">
+        <div class="navbar-item">
+          <div class="buttons">
+            <div class="button is-success" onClick="addColumn()">
+              Add Column
+            </div>
+            <div class="button is-danger" onClick-="removeColumn()">
+              Remove Column
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <div class="button is-success" onClick="addRow()">Add Row</div>
+            <div class="button is-danger" onClick-="removeRow()">
+              Remove Row
             </div>
           </div>
         </div>
