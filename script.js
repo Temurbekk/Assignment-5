@@ -37,7 +37,7 @@ const addRow = () => {
     //Derrick's Code: This allows you to change the color of the cells
     //updated to call a general event handling function to allow for setting
     //colours via drag
-    handleEvents(tableCells[i])
+    handleEvents(tableCells[i], true);
   }
   //Making sure the function is being called
   console.log("Adding cell");
@@ -62,7 +62,7 @@ const addColumn = () => {
     //Derrick's Code: This allows you to change the color of the cells
     //updated to call a general event handling function to allow for setting
     //colours via drag
-    handleEvents(tableCells[i])
+    handleEvents(tableCells[i], true);
   }
 
   //Making sure the function is being called
@@ -94,13 +94,14 @@ const selectColour = (colour) => {
 };
 
 const setColour = (cell) => {
-  cell.style.backgroundColour = selectedColor;
+  cell.style.backgroundColor = selectedColor;
   cell.classList.remove("uncoloured");
 };
 
-function handleEvents(cell) {
+function handleEvents(cell, newCell = false) {
   //handles clicking
-  cell.addEventListener("click", setColour(cell));
+  if (!newCell) 
+  cell.addEventListener("click", setColour(cell, newCells));
 
   //handles dragging/"drawing"
   cell.addEventListener("mousedown", (e) => {
@@ -108,21 +109,22 @@ function handleEvents(cell) {
   });
 
   cell.addEventListener("mousemove", (e) => {
-    if (colouring)
-      event.target.style.backgroundColor = selectedColor;
+    if (colouring) {
+      e.target.style.backgroundColor = selectedColor;
+      e.target.classList.remove("uncoloured");
+    }
   });
 
   cell.addEventListener("mouseup", (e) => {
-    if (colouring)
-      colouring = false;
+    if (colouring) colouring = false;
   });
 }
 
 const clearAll = () => {
   const allCells = document.getElementsByTagName("td");
   for (let i = 0; i < allCells.length; i++) {
-    allCells[i].style = undefined;
-    allCells[i].classList.add("uncoloured")
+    allCells[i].style.backgroundColor = "#FFFFFF";
+    allCells[i].classList.add("uncoloured");
   }
 };
 
@@ -134,9 +136,14 @@ const fillAll = () => {
 };
 
 const fillAllUncolored = () => {
-  const unColoredCells = document.getElementsByClassName("pixel");
-  for (let i = 0; i < unColoredCells.length; i++) {
-    if(unColoredCells.style === undefined)
-      unColoredCells[i].style.backgroundColor = selectedColor;
+  const unColoredCells = Array.from(document.getElementsByClassName("uncoloured"));
+  const length = unColoredCells.length;
+  for (let i = 0; i < length; i++) {
+    unColoredCells[i].style.backgroundColor = selectedColor;
+    unColoredCells[i].classList.remove("uncoloured");
   }
-}
+};
+
+document.addEventListener("mouseup", (e) => {
+  colouring = false;
+});
