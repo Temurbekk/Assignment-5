@@ -15,6 +15,8 @@ function pickWhite() {
     selectedColor = "#FFFFFF"
 }
 
+const tableCells = document.getElementsByTagName("td");
+
 const addRow = () => {
   if (columns === 0) column = 1;
   const table = document.getElementById("table");
@@ -30,6 +32,12 @@ const addRow = () => {
     pixel.classList.add("pixel");
     row.appendChild(pixel);
     index++;
+  }
+
+  for (let i = 0; i < tableCells.length; i++) {//Derrick's Code: This allows you to change the color of the cells
+      tableCells[i].addEventListener("click", (event) => {
+          event.target.style.backgroundColor = selectedColor;
+      })
   }
   //Making sure the function is being called
   console.log("Adding cell");
@@ -49,6 +57,12 @@ const addColumn = () => {
     pixel.classList.add("pixel");
     cell.appendChild(pixel);
   });
+
+  for (let i = 0; i < tableCells.length; i++) { //Derrick's Code: This allows you to change the color of the cells
+      tableCells[i].addEventListener("click", (event) => {
+          event.target.style.backgroundColor = selectedColor;
+      })
+  }
 
   //Making sure the function is being called
   console.log("Adding column");
