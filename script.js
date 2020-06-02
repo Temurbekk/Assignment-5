@@ -1,5 +1,19 @@
 let columns = 1;
 
+var selectedColor = "#FFFFFF";
+
+function pickBlue() {
+    selectedColor = "#00FFFF";
+}
+
+function pickRed() {
+    selectedColor = "#FF6666";
+}
+
+function pickWhite() {
+    selectedColor = "#FFFFFF"
+}
+
 const addRow = () => {
   const table = document.getElementById("table");
   const row = document.createElement("tr");
