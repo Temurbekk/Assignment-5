@@ -121,7 +121,7 @@ function handleEvents(cell) {
 const clearAll = () => {
   const allCells = document.getElementsByTagName("td");
   for (let i = 0; i < allCells.length; i++) {
-    allCells[i].style.backgroundColor = "";
+    allCells[i].style.backgroundColor = "#FFFFFF";
   }
 };
 
@@ -131,3 +131,11 @@ const fillAll = () => {
     allCells[i].style.backgroundColor = selectedColor;
   }
 };
+
+const fillAllUncolored = () => {
+  const allCells = document.getElementsByTagName("td");
+  for (let i = 0; i < allCells.length; i++) {
+    if(allCells[i].style.backgroundColor == "#FFFFFF") 
+      allCells[i].style.backgroundColor = selectedColor;
+  }
+}
