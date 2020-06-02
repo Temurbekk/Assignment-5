@@ -45,7 +45,7 @@ const addRow = () => {
 
 const addColumn = () => {
   if (columns === 0) {
-    column = 1;
+    columns = 1;
     addRow();
   }
   columns++;
@@ -100,8 +100,7 @@ const setColour = (cell) => {
 
 function handleEvents(cell, newCell = false) {
   //handles clicking
-  if (!newCell) 
-  cell.addEventListener("click", setColour(cell, newCells));
+  if (!newCell) cell.addEventListener("click", setColour(cell, newCells));
 
   //handles dragging/"drawing"
   cell.addEventListener("mousedown", (e) => {
@@ -136,7 +135,9 @@ const fillAll = () => {
 };
 
 const fillAllUncolored = () => {
-  const unColoredCells = Array.from(document.getElementsByClassName("uncoloured"));
+  const unColoredCells = Array.from(
+    document.getElementsByClassName("uncoloured")
+  );
   const length = unColoredCells.length;
   for (let i = 0; i < length; i++) {
     unColoredCells[i].style.backgroundColor = selectedColor;
