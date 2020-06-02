@@ -1,4 +1,5 @@
 let columns = 1;
+let currentColour = "white"
 
 const addRow = () => {
   const table = document.getElementById("table");
@@ -31,3 +32,12 @@ const addColumn = () => {
   //Making sure the function is being called
   console.log("Adding column");
 };
+
+const selectColour = (colour) =>{
+  currentColour=colour;
+};
+
+function setColour(cell){
+  cell.style.backgroundColour = currentColour;
+  cell.classList.remove("uncoloured");
+}
