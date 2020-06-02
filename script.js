@@ -43,3 +43,16 @@ const removeRow = () => {
 
   console.log("Removing Row");
 };
+
+const removeColumn = () => {
+  columns--;
+
+  const row = document.getElementsByClassName("row");
+  const tableRow = Array.from(row);
+
+  tableRow.forEach((cell) => {
+    cell.removeChild(cell.lastChild);
+  });
+
+  console.log("Remove Column");
+};
