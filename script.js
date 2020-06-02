@@ -1,17 +1,24 @@
 let columns = 0;
 let colouring = false;
 var selectedColor = "#FFFFFF";
+var colorPicker = document.getElementById("colorPicker");
 
 function pickBlue() {
-  selectedColor = "#00FFFF";
+    selectedColor = "#00FFFF";
+    colorPicker.textContent = "Color Selected: Blue"
+
 }
 
 function pickRed() {
-  selectedColor = "#FF6666";
+    selectedColor = "#FF6666";
+    colorPicker.textContent = "Color Selected: Red"
+
 }
 
 function pickWhite() {
-  selectedColor = "#FFFFFF";
+    selectedColor = "#FFFFFF";
+    colorPicker.textContent = "Color Selected: White"
+
 }
 
 const tableCells = document.getElementsByTagName("td");
@@ -69,28 +76,28 @@ const addColumn = () => {
   console.log("Adding column");
 };
 const removeRow = () => {
-  const row = document.getElementsByClassName("row");
-  const tableRow = Array.from(row);
-  let length = tableRow.length - 1;
-  tableRow[length].parentNode.removeChild(tableRow[length]);
+    const row = document.getElementsByClassName("row");
+    const tableRow = Array.from(row);
+    let length = tableRow.length - 1;
+    tableRow[length].parentNode.removeChild(tableRow[length]);
 
-  console.log("Removing Row");
+    console.log("Removing Row");
 };
 
 const removeColumn = () => {
-  columns--;
+    columns--;
 
-  const row = document.getElementsByClassName("row");
-  const tableRow = Array.from(row);
+    const row = document.getElementsByClassName("row");
+    const tableRow = Array.from(row);
 
-  tableRow.forEach((cell) => {
-    cell.removeChild(cell.lastChild);
-  });
+    tableRow.forEach((cell) => {
+        cell.removeChild(cell.lastChild);
+    });
 
-  console.log("Remove Column");
+    console.log("Remove Column");
 };
 const selectColour = (colour) => {
-  currentColour = colour;
+    currentColour = colour;
 };
 
 const setColour = (cell) => {
