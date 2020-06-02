@@ -4,15 +4,15 @@ let currentColour = "white";
 var selectedColor = "#FFFFFF";
 
 function pickBlue() {
-    selectedColor = "#00FFFF";
+  selectedColor = "#00FFFF";
 }
 
 function pickRed() {
-    selectedColor = "#FF6666";
+  selectedColor = "#FF6666";
 }
 
 function pickWhite() {
-    selectedColor = "#FFFFFF"
+  selectedColor = "#FFFFFF";
 }
 
 const tableCells = document.getElementsByTagName("td");
@@ -34,10 +34,11 @@ const addRow = () => {
     index++;
   }
 
-  for (let i = 0; i < tableCells.length; i++) {//Derrick's Code: This allows you to change the color of the cells
-      tableCells[i].addEventListener("click", (event) => {
-          event.target.style.backgroundColor = selectedColor;
-      })
+  for (let i = 0; i < tableCells.length; i++) {
+    //Derrick's Code: This allows you to change the color of the cells
+    tableCells[i].addEventListener("click", (event) => {
+      event.target.style.backgroundColor = selectedColor;
+    });
   }
   //Making sure the function is being called
   console.log("Adding cell");
@@ -58,10 +59,11 @@ const addColumn = () => {
     cell.appendChild(pixel);
   });
 
-  for (let i = 0; i < tableCells.length; i++) { //Derrick's Code: This allows you to change the color of the cells
-      tableCells[i].addEventListener("click", (event) => {
-          event.target.style.backgroundColor = selectedColor;
-      })
+  for (let i = 0; i < tableCells.length; i++) {
+    //Derrick's Code: This allows you to change the color of the cells
+    tableCells[i].addEventListener("click", (event) => {
+      event.target.style.backgroundColor = selectedColor;
+    });
   }
 
   //Making sure the function is being called
@@ -98,11 +100,9 @@ const setColour = (cell) => {
 };
 
 const clearAll = () => {
-  //get all cells in the .html
-  const cells = document.getElementsById("td");
-  //for every cell, change the colour to white and mark it uncoloured
-  cells.forEach((val) => {
-    val.style.backgroundColor = "white";
-    val.classList.add("uncoloured");
-  });
+  const allCells = document.getElementsByTagName("td");
+
+  for (let i = 0; i < allCells.length; i++) {
+    allCells[i].style.backgroundColor = "";
+  }
 };
