@@ -1,25 +1,29 @@
 let columns = 0;
 let colouring = false;
-var selectedColor = "#FFFFFF";
-var colorPicker = document.getElementById("colorPicker");
+let selectedColor = "#FFFFFF";
+let selectedBackground = "none";
+let colorPicker = document.getElementById("colorPicker");
 
 function pickBlue() {
-    selectedColor = "#00FFFF";
-    colorPicker.textContent = "Color Selected: Blue"
-
+  selectedColor = "#00FFFF";
+  colorPicker.textContent = "Color Selected: Blue";
 }
 
 function pickRed() {
-    selectedColor = "#FF6666";
-    colorPicker.textContent = "Color Selected: Red"
-
+  selectedColor = "#FF6666";
+  colorPicker.textContent = "Color Selected: Red";
 }
 
-function pickWhite() {
-    selectedColor = "#FFFFFF";
-    colorPicker.textContent = "Color Selected: White"
+const pickWhite = () => {
+  selectedColor = "#FFFFFF";
+  colorPicker.textContent = "Color Selected: White";
+};
 
-}
+const pickDepak = () => {
+  selectedColor = "Depak";
+  selectedBackground = "url('./50688605.jpg')";
+  colorPicker.textContent = "Color Selected: Depak";
+};
 
 const tableCells = document.getElementsByTagName("td");
 
@@ -76,28 +80,28 @@ const addColumn = () => {
   console.log("Adding column");
 };
 const removeRow = () => {
-    const row = document.getElementsByClassName("row");
-    const tableRow = Array.from(row);
-    let length = tableRow.length - 1;
-    tableRow[length].parentNode.removeChild(tableRow[length]);
+  const row = document.getElementsByClassName("row");
+  const tableRow = Array.from(row);
+  let length = tableRow.length - 1;
+  tableRow[length].parentNode.removeChild(tableRow[length]);
 
-    console.log("Removing Row");
+  console.log("Removing Row");
 };
 
 const removeColumn = () => {
-    columns--;
+  columns--;
 
-    const row = document.getElementsByClassName("row");
-    const tableRow = Array.from(row);
+  const row = document.getElementsByClassName("row");
+  const tableRow = Array.from(row);
 
-    tableRow.forEach((cell) => {
-        cell.removeChild(cell.lastChild);
-    });
+  tableRow.forEach((cell) => {
+    cell.removeChild(cell.lastChild);
+  });
 
-    console.log("Remove Column");
+  console.log("Remove Column");
 };
 const selectColour = (colour) => {
-    currentColour = colour;
+  currentColour = colour;
 };
 
 const setColour = (cell) => {
@@ -116,13 +120,18 @@ function handleEvents(cell, newCell = false) {
 
   cell.addEventListener("mousemove", (e) => {
     if (colouring) {
-      e.target.style.backgroundColor = selectedColor;
-      e.target.classList.remove("uncoloured");
+      if (selectedColor === "Depak") {
+        e.target.style.backgroundImage = selectedBackground;
+      } else {
+        e.target.style.backgroundColor = selectedColor;
+        e.target.style.backgroundImage = "none";
+        e.target.classList.remove("uncoloured");
+      }
     }
   });
 
   cell.addEventListener("mouseup", (e) => {
-    if (colouring) colouring = false;
+    if (colouring) icolouring = false;
   });
 }
 
@@ -130,6 +139,7 @@ const clearAll = () => {
   const allCells = document.getElementsByTagName("td");
   for (let i = 0; i < allCells.length; i++) {
     allCells[i].style.backgroundColor = "#FFFFFF";
+    allCells[i].style.backgroundImage = "none";
     allCells[i].classList.add("uncoloured");
   }
 };
@@ -138,6 +148,7 @@ const fillAll = () => {
   const allCells = document.getElementsByTagName("td");
   for (let i = 0; i < allCells.length; i++) {
     allCells[i].style.backgroundColor = selectedColor;
+    allCells[i].style.backgroundImage = selectedBackground;
   }
 };
 
@@ -148,6 +159,7 @@ const fillAllUncolored = () => {
   const length = unColoredCells.length;
   for (let i = 0; i < length; i++) {
     unColoredCells[i].style.backgroundColor = selectedColor;
+    unColoredCells[i].style.backgroundImage = selectedBackground;
     unColoredCells[i].classList.remove("uncoloured");
   }
 };

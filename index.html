@@ -44,28 +44,25 @@
       <div>
         <div class="navbar-item">
           <div class="buttons">
-            <div class="button is-link" onclick="fillAll()">
-              Fill All
-            </div>
+            <div class="button is-link" onclick="fillAll()">Fill All</div>
             <div class="button is-primary" onclick="fillAllUncolored()">
               Fill All Uncolored
             </div>
-            <div class="button is-warning" onClick="clearAll()">
-              Clear All
-            </div>
+            <div class="button is-warning" onClick="clearAll()">Clear All</div>
             <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">
-                Colors
-              </a>
+              <a class="navbar-link"> Colors </a>
               <div class="navbar-dropdown">
                 <a onClick="pickBlue()" class="navbar-item" id="blue">Blue</a>
                 <a onClick="pickRed()" class="navbar-item" id="red">Red</a>
                 <a onClick="pickWhite()" class="navbar-item" id="white"
                   >White</a
                 >
+                <a onClick="pickDepak()" class="navbar-item" id="white"
+                  >Depak</a
+                >
               </div>
             </div>
-            <div class="navbar-item" id ="colorPicker">
+            <div class="navbar-item" id="colorPicker">
               Color Selected: White
             </div>
           </div>
@@ -75,9 +72,7 @@
         <div class="navbar-item">
           <div class="buttons">
             <div class="button is-success" onClick="addRow()">Add Row</div>
-            <div class="button is-danger" onClick="removeRow()">
-              Remove Row
-            </div>
+            <div class="button is-danger" onClick="removeRow()">Remove Row</div>
           </div>
         </div>
       </div>
